@@ -25,14 +25,16 @@ go.data<-read.csv("/Users/bgurcay86/Documents/Penn/Research/GJT/GroupIncentive/d
 
 ### Control Condition Data Manipulation ###
 
-# Pick 100 subjects randomly from the control condition and restructure the control condition data sothat you only
+# Pick 100 subjects randomly from the control condition and restructure the control condition data so that you only
 # look at the estimations but not confidence ratings.
 
 selection <- sort(sample(1:length(control.data$labID), 100, replace=F)) #the rows (Ss) to be selected from the raw control data file 
 control.data <- control.data[selection,]
 numbers.con <- seq(1:length(names(control.data)))
-even <- numbers.con[seq(2,length(names(control.data)),by=2)] 
-control.data <- control.data[,c(1,even)] # selects the even cols (Estimations) and the Subj ID columns and saves it as a new data file
+est.con <- numbers.con[seq(2,length(names(control.data)),by=2)] #the cols that have the estimations
+conf.con <- numbers.con[seq(3,length(names(control.data)),by=2)] #the cols that have the confidence ratings
+control.data.est <- control.data[,c(1,est.con)] # selects the even cols (Estimations) and the Subj ID columns and saves it as a new data file
+control.data.conf <- control.data[,c(1,conf.con)] # selects the odds cols (Confidence ratings) and the Subj ID columns and saves it as a new data file
 
 #add a group number for each 10 subjects to form groups in the control condition
 
@@ -48,8 +50,8 @@ abs.percentage.error <-function(x,v) {
 
 # transform the control.data files into absolute percentage error
 
-output <- abs.percentage.error(control.data[,c(2:17)],true.values)
-output$group <- control.data$group
+output <- abs.percentage.error(control.data.est[,c(2:17)],true.values)
+output$group <- control.data.est$group
 output
 
 ### IO Condition Data Manipulation ###
