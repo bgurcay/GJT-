@@ -170,7 +170,51 @@ go.data.2nd.est <- go.data[,c(1,2,everyfour.GO.2nd.est)]
 
 ## transform the go.data.1st.est and go.data.2nd.est into absolute percentage error and save them in new data frames separately
 
+# transformation for go.data.1st.est
 
+q1.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,3],true.values[1])
+q2.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,4],true.values[2])
+q3.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,5],true.values[3])
+q4.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,6],true.values[4])
+q5.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,7],true.values[5])
+q6.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,8],true.values[6])
+q7.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,9],true.values[7])
+q8.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,10],true.values[8])
+q9.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,11],true.values[9])
+q10.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,12],true.values[10])
+q11.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,13],true.values[11])
+q12.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,14],true.values[12])
+q13.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,15],true.values[13])
+q14.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,16],true.values[14])
+q15.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,17],true.values[15])
+q16.abs.perErr.GO.est1 <- abs.percentage.error(go.data.1st.est[,18],true.values[16])
+
+abs.perErr.GO.est1 <- data.frame(labID=go.data.1st.est[,1], experiment_number=go.data.1st.est[,2], q1est1=q1.abs.perErr.GO.est1, q2est1=q2.abs.perErr.GO.est1, q3est1=q3.abs.perErr.GO.est1, q4est1=q4.abs.perErr.GO.est1, q5est1=q5.abs.perErr.GO.est1, q6est1=q6.abs.perErr.GO.est1, q7est1=q7.abs.perErr.GO.est1, q8est1=q8.abs.perErr.GO.est1, q9est1=q9.abs.perErr.GO.est1, q10est1=q10.abs.perErr.GO.est1, q11est1=q11.abs.perErr.GO.est1, q12est1=q12.abs.perErr.GO.est1, q13est1=q13.abs.perErr.GO.est1, q14est1=q14.abs.perErr.GO.est1, q15est1=q15.abs.perErr.GO.est1, q16est1=q16.abs.perErr.GO.est1)
+
+abs.perErr.GO.est1
+
+# transformation for io.data.2nd.est
+
+q1.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,3],true.values[1])
+q2.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,4],true.values[2])
+q3.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,5],true.values[3])
+q4.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,6],true.values[4])
+q5.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,7],true.values[5])
+q6.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,8],true.values[6])
+q7.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,9],true.values[7])
+q8.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,10],true.values[8])
+q9.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,11],true.values[9])
+q10.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,12],true.values[10])
+q11.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,13],true.values[11])
+q12.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,14],true.values[12])
+q13.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,15],true.values[13])
+q14.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,16],true.values[14])
+q15.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,17],true.values[15])
+q16.abs.perErr.GO.est2 <- abs.percentage.error(go.data.2nd.est[,18],true.values[16])
+
+abs.perErr.GO.est2 <- data.frame(labID=go.data.2nd.est[,1], experiment_number=go.data.2nd.est[,2], q1est2=q1.abs.perErr.GO.est2, q2est2=q2.abs.perErr.GO.est2, q3est2=q3.abs.perErr.GO.est2, q4est2=q4.abs.perErr.GO.est2, q5est2=q5.abs.perErr.GO.est2, q6est2=q6.abs.perErr.GO.est2, q7est2=q7.abs.perErr.GO.est2, q8est2=q8.abs.perErr.GO.est2, q9est2=q9.abs.perErr.GO.est2, q10est2=q10.abs.perErr.GO.est2, q11est2=q11.abs.perErr.GO.est2, q12est2=q12.abs.perErr.GO.est2, q13est2=q13.abs.perErr.GO.est2, q14est2=q14.abs.perErr.GO.est2, q15est2=q15.abs.perErr.GO.est2, q16est2=q16.abs.perErr.GO.est2)
+
+abs.perErr.GO.est2
 
 # pick only the first confidence rating cols
 
