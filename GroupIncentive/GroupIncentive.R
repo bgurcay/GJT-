@@ -60,9 +60,12 @@ output.con.est
 
 ### IO Condition Data Manipulation ###
 
-#pick only the second estimation rows
+#pick only the first estimation rows
 
 numbers.IO <- seq(1:length(names(io.data)))
+
+#pick only the second estimation rows
+
 everyfour <- numbers.IO[seq(5,length(names(io.data)),by=4)] 
 io.data <- io.data[,c(1,2,everyfour)]
 
