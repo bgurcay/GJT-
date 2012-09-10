@@ -52,17 +52,34 @@ abs.percentage.error <-function(x,v) {
  abs(((x-v)/v)*100)
 }
 
-# transform the control.data files into absolute percentage error
+# transform the control.data.est columns into absolute percentage error and save them in a new data frame
 
-absPercentErr.con.est <- abs.percentage.error(control.data.est[,c(2:17)],true.values)
-absPercentErr.con.est$group <- control.data.est$group
-absPercentErr.con.est
+q1.abs.perErr.con.est <- abs.percentage.error(control.data.est[,2],true.values[1])
+q2.abs.perErr.con.est <- abs.percentage.error(control.data.est[,3],true.values[2])
+q3.abs.perErr.con.est <- abs.percentage.error(control.data.est[,4],true.values[3])
+q4.abs.perErr.con.est <- abs.percentage.error(control.data.est[,5],true.values[4])
+q5.abs.perErr.con.est <- abs.percentage.error(control.data.est[,6],true.values[5])
+q6.abs.perErr.con.est <- abs.percentage.error(control.data.est[,7],true.values[6])
+q7.abs.perErr.con.est <- abs.percentage.error(control.data.est[,8],true.values[7])
+q8.abs.perErr.con.est <- abs.percentage.error(control.data.est[,9],true.values[8])
+q9.abs.perErr.con.est <- abs.percentage.error(control.data.est[,10],true.values[9])
+q10.abs.perErr.con.est <- abs.percentage.error(control.data.est[,11],true.values[10])
+q11.abs.perErr.con.est <- abs.percentage.error(control.data.est[,12],true.values[11])
+q12.abs.perErr.con.est <- abs.percentage.error(control.data.est[,13],true.values[12])
+q13.abs.perErr.con.est <- abs.percentage.error(control.data.est[,14],true.values[13])
+q14.abs.perErr.con.est <- abs.percentage.error(control.data.est[,15],true.values[14])
+q15.abs.perErr.con.est <- abs.percentage.error(control.data.est[,16],true.values[15])
+q16.abs.perErr.con.est <- abs.percentage.error(control.data.est[,17],true.values[16])
+
+abs.perErr.con.est <- data.frame(labID=control.data.est[,1], experiment_number=control.data.est[,18], q1est=q1.abs.perErr.con.est, q2est=q2.abs.perErr.con.est, q3est=q3.abs.perErr.con.est, q4est=q4.abs.perErr.con.est, q5est=q5.abs.perErr.con.est, q6est=q6.abs.perErr.con.est, q7est=q7.abs.perErr.con.est, q8est=q8.abs.perErr.con.est, q9est=q9.abs.perErr.con.est, q10est=q10.abs.perErr.con.est, q11est=q11.abs.perErr.con.est, q12est=q12.abs.perErr.con.est, q13est=q13.abs.perErr.con.est, q14est=q14.abs.perErr.con.est, q15est=q15.abs.perErr.con.est, q16est=q16.abs.perErr.con.est)
+
+abs.perErr.con.est
 
 ### IO Condition Data Manipulation ###
 
 # get rid of rows that only have NAs
 
-io.data <- io.data[-c(1,91),]
+io.data <- io.data[-c(1,27,91),]
 
 #pick only the first estimation cols
 
@@ -76,6 +93,8 @@ everyfour.IO.2nd.est <- numbers.IO[seq(5,length(names(io.data)),by=4)]
 io.data.2nd.est <- io.data[,c(1,2,everyfour.IO.2nd.est)]
 
 # transform the io.data.1st.est and io.data.2nd.est into absolute percentage error
+
+### NEEDS TO BE FIXED ###
 
 absPercentErr.IO.1st.est <- abs.percentage.error(io.data.1st.est[,c(3:length(names(io.data.1st.est)))],true.values)
 absPercentErr.IO.2nd.est <- abs.percentage.error(io.data.2nd.est[,c(3:length(names(io.data.2nd.est)))],true.values)
