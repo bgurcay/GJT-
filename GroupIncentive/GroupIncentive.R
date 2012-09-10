@@ -67,13 +67,13 @@ io.data <- io.data[-c(1,91),]
 #pick only the first estimation cols
 
 numbers.IO <- seq(1:length(names(io.data)))
-everyfour.1st.est <- numbers.IO[seq(3,length(names(io.data)),by=4)]
-io.data.1st.est <- io.data[,c(1,2,everyfour.1st.est)]
+everyfour.IO.1st.est <- numbers.IO[seq(3,length(names(io.data)),by=4)]
+io.data.1st.est <- io.data[,c(1,2,everyfour.IO.1st.est)]
 
 #pick only the second estimation cols
 
-everyfour.2nd.est <- numbers.IO[seq(5,length(names(io.data)),by=4)] 
-io.data.2nd.est <- io.data[,c(1,2,everyfour.2nd.est)]
+everyfour.IO.2nd.est <- numbers.IO[seq(5,length(names(io.data)),by=4)] 
+io.data.2nd.est <- io.data[,c(1,2,everyfour.IO.2nd.est)]
 
 # transform the io.data.1st.est and io.data.2nd.est into absolute percentage error
 
@@ -84,13 +84,13 @@ absPercentErr.IO.2nd.est
 
 # pick only the first confidence rating cols
 
-everyfour.1st.conf <- numbers.IO[seq(4,length(names(io.data)),by=4)]
-io.data.1st.conf <- io.data[,c(1,2,everyfour.1st.conf)]
+everyfour.IO.1st.conf <- numbers.IO[seq(4,length(names(io.data)),by=4)]
+io.data.1st.conf <- io.data[,c(1,2,everyfour.IO.1st.conf)]
 
 # pick only the second confidence rating cols
 
-everyfour.2nd.conf <- numbers.IO[seq(6,length(names(io.data)),by=4)]
-io.data.2nd.conf <- io.data[,c(1,2,everyfour.2nd.conf)]
+everyfour.IO.2nd.conf <- numbers.IO[seq(6,length(names(io.data)),by=4)]
+io.data.2nd.conf <- io.data[,c(1,2,everyfour.IO.2nd.conf)]
 
 # do a linear transformation on confidence ratings so that this condition matches the control condition
 
@@ -101,15 +101,30 @@ io.data.2nd.conf.tr <- ceiling(io.data.2nd.conf/2)
 
 # pick only the first estimation cols
 
+numbers.GO <- seq(1:length(names(go.data)))
+everyfour.GO.1st.est <- numbers.GO[seq(3,length(names(go.data)),by=4)]
+go.data.1st.est <- go.data[,c(1,2,everyfour.GO.1st.est)]
 
 # pick only the second estimation cols
 
-go.data.2nd.est <- go.data[,c(1,2,everyfour)]
+everyfour.GO.2nd.est <- numbers.GO[seq(5,length(names(go.data)),by=4)]
+go.data.2nd.est <- go.data[,c(1,2,everyfour.GO.2nd.est)]
 
 # transform the go.data.1st.est and go.data.2nd.est into absolute percentage error
 
+
+
 # pick only the first confidence rating cols
+
+everyfour.GO.1st.conf <- numbers.GO[seq(4,length(names(go.data)),by=4)]
+go.data.1st.conf <- go.data[,c(1,2,everyfour.GO.1st.conf)]
 
 # pick only the second confidence rating cols
 
-# o a linear transformation on confidence ratings so that this condition matches the control condition
+everyfour.GO.2nd.conf <- numbers.GO[seq(6,length(names(go.data)),by=4)]
+go.data.2nd.conf <- go.data[,c(1,2,everyfour.GO.2nd.conf)]
+
+# do a linear transformation on confidence ratings so that this condition matches the control condition
+
+go.data.1st.conf.tr <- ceiling(go.data.1st.conf/2)
+go.data.2nd.conf.tr <- ceiling(go.data.2nd.conf/2)
