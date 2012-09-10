@@ -26,7 +26,7 @@ go.data<-read.csv("/Users/bgurcay86/Documents/Penn/Research/GJT/GroupIncentive/d
 ### Control Condition Data Manipulation ###
 
 # Pick 100 subjects randomly from the control condition and restructure the control condition data so that you only
-# look at the estimations but not confidence ratings.
+# look at the estimations but not confidence ratings and vice versa.
 
 selection <- sort(sample(1:length(control.data$labID), 100, replace=F)) #the rows (Ss) to be selected from the raw control data file 
 control.data.100 <- control.data[selection,]
@@ -54,23 +54,62 @@ abs.percentage.error <-function(x,v) {
 
 # transform the control.data files into absolute percentage error
 
-output.con.est <- abs.percentage.error(control.data.est[,c(2:17)],true.values)
-output.con.est$group <- control.data.est$group
-output.con.est
+absPercentErr.con.est <- abs.percentage.error(control.data.est[,c(2:17)],true.values)
+absPercentErr.con.est$group <- control.data.est$group
+absPercentErr.con.est
 
 ### IO Condition Data Manipulation ###
 
-#pick only the first estimation rows
+# get rid of rows that only have NAs
+
+io.data <- io.data[-c(1,91),]
+
+#pick only the first estimation cols
 
 numbers.IO <- seq(1:length(names(io.data)))
+everyfour.1st.est <- numbers.IO[seq(3,length(names(io.data)),by=4)]
+io.data.1st.est <- io.data[,c(1,2,everyfour.1st.est)]
 
-#pick only the second estimation rows
+#pick only the second estimation cols
 
-everyfour <- numbers.IO[seq(5,length(names(io.data)),by=4)] 
-io.data <- io.data[,c(1,2,everyfour)]
+everyfour.2nd.est <- numbers.IO[seq(5,length(names(io.data)),by=4)] 
+io.data.2nd.est <- io.data[,c(1,2,everyfour.2nd.est)]
+
+# transform the io.data.1st.est and io.data.2nd.est into absolute percentage error
+
+absPercentErr.IO.1st.est <- abs.percentage.error(io.data.1st.est[,c(3:length(names(io.data.1st.est)))],true.values)
+absPercentErr.IO.2nd.est <- abs.percentage.error(io.data.2nd.est[,c(3:length(names(io.data.2nd.est)))],true.values)
+absPercentErr.IO.1st.est
+absPercentErr.IO.2nd.est
+
+# pick only the first confidence rating cols
+
+everyfour.1st.conf <- numbers.IO[seq(4,length(names(io.data)),by=4)]
+io.data.1st.conf <- io.data[,c(1,2,everyfour.1st.conf)]
+
+# pick only the second confidence rating cols
+
+everyfour.2nd.conf <- numbers.IO[seq(6,length(names(io.data)),by=4)]
+io.data.2nd.conf <- io.data[,c(1,2,everyfour.2nd.conf)]
+
+# do a linear transformation on confidence ratings so that this condition matches the control condition
+
+io.data.1st.conf.tr <- ceiling(io.data.1st.conf/2)
+io.data.2nd.conf.tr <- ceiling(io.data.2nd.conf/2)
 
 ### GO Condition Data Manipulation ###
 
-#pick only the second estimation rows
+# pick only the first estimation cols
 
-go.data <- go.data[,c(1,2,everyfour)]
+
+# pick only the second estimation cols
+
+go.data.2nd.est <- go.data[,c(1,2,everyfour)]
+
+# transform the go.data.1st.est and go.data.2nd.est into absolute percentage error
+
+# pick only the first confidence rating cols
+
+# pick only the second confidence rating cols
+
+# o a linear transformation on confidence ratings so that this condition matches the control condition
